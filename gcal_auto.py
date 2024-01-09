@@ -25,9 +25,7 @@ def connection():
     creds = None
     if os.path.exists('token.json'):
         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
-        # sync = '連携済み'
         return '連携済みです'
-        # return redirect(url_for('index'), sync=sync)
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
@@ -40,7 +38,7 @@ def connection():
             token.write(creds.to_json())
     service = build('calendar', 'v3', credentials=creds)
     # topic_name = 'projects/leafy-unity-409311/topics/gcal_auto' 
-    return creds
+    return '同期が完了しました'
 
 # def setup_webhook():
 #     creds = connection()
