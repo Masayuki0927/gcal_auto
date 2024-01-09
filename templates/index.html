@@ -2,9 +2,26 @@
 <html>
 <head>
     <title>Gcal自動同期</title>
+    <script>
+        // ページが読み込まれた後に実行する関数
+        window.onload = function() {
+          // 特定のテキストを含む要素を取得
+          var messageElement = document.getElementById('message');
+    
+          // 特定のテキストが表示されたらリダイレクトする
+          if (messageElement.innerText === 'The authentication flow has completed. You may close this window.') {
+            // 元の画面（'index'）にリダイレクト
+            window.location.href = '/';  // '/'にはリダイレクト先のURLを指定
+          }
+        };
+      </script>
 </head>
 <body>
-    <h2>Googleカレンダー情報を同期</h2>
+    <h2>Googleカレンダーを連携</h2>
+    <form action="/connection" method="post">
+        <input type="submit" value="Googleカレンダーを連携">
+    </form>
+    <h2>カレンダー情報を同期</h2>
     <form action="/sync" method="post">
         <input type="submit" value="カレンダー情報を同期">
     </form>
